@@ -24,7 +24,7 @@ exports.extractCoreference = (Text) => {
         const getPronouns = Object.keys(getPhraseClassification).filter(chave => getPhraseClassification[chave].includes('PRO'));
 
         const validPronouns = getPronouns.filter(item => ["eu", "tu", "ele", "ela", "nós", "vós", "eles", "elas", "deles", "delas", "dele", "dela"].includes(item));
-        for (const pronoun of validPronouns) {
+        if (mainNoun !== null) for (const pronoun of validPronouns) {
             callback[pronoun] = mainNoun.tag;
         }
     }
